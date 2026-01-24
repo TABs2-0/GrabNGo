@@ -1,0 +1,127 @@
+TheWidgets:
+
+<ScrollerViewer@ScrollView>:
+    TheGridWidget:
+#    height: self.minimum_height
+
+<TheGridWidget>:
+    rows: 8
+    ToggleButton:
+        text:"On"
+        on_state: root.toogled(self)
+    Button:
+        text:"A"
+        disabled:root.toggle
+        on_press: root.press()
+    Label:
+        text: root.texto1
+    Button:
+        text:"B"
+    Button:
+        text:"C"
+    Button:
+        text:"D"
+    Button:
+        text:"E"
+    Button:
+        text:"F"
+    Button:
+        text:"G"
+    Button:
+        text:"H"
+    Button:
+        text:"I"
+    Button:
+        text:"J"
+    Button:
+        text:"K"
+    Button:
+        text:"L"
+    Button:
+        text:"M"
+    Button:
+        text:"N"
+    Button:
+        text:"O"
+    Button:
+        text:"P"
+
+
+<TheAnchorWidget>:
+    achor_x: "center"
+    anchor_y: "top"
+    Label:
+        text: "This is the begining ot a new  dawn"
+        size_hint: .1,.1
+
+
+
+<TheWidgets>:
+    orientation: "horizontal"
+    spacing: "10dp"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Enter your name here"
+            font_size: 20
+        Label:
+            text: "Enter your Age here"
+            font_size: 20
+        Label:
+            text: "Enter your class here"
+            font_size: 20
+        Label:
+            text: "Enter your sport here"
+            font_size: 20
+
+    BoxLayout:
+        spacing: "10dp"
+        orientation: "vertical"
+        TextInput:
+            id: name
+            font_size: 45
+            size_hint_y: 0.3
+            readonly: False
+            hallign: "right"
+            multiline: False
+            background_color: [0.2,0.2,0.2,1]
+            foreground_color: [1,1,1,1]
+            color: 0,1,1,1
+        TextInput:
+            id: age
+            font_size: 45
+            size_hint_y: 0.3
+            readonly: False
+            hallign: "right"
+            multiline: False
+            background_color: [0.2,0.2,0.2,1]
+            foreground_color: [1,1,1,1]
+            color: 0,1,1,1
+        
+        TextInput:
+            id: Class
+            font_size: 45
+            size_hint_y: 0.3
+            readonly: False
+            hallign: "right"
+            multiline: False
+            background_color: [0.2,0.2,0.2,1]
+            foreground_color: [1,1,1,1]
+            color: 0,1,1,1
+        
+        TextInput:
+            id: sport
+            font_size: 45
+            size_hint_y: 0.3
+            readonly: False
+            hallign: "right"
+            multiline: False
+            background_color: [0.2,0.2,0.2,1]
+            foreground_color: [1,1,1,1]
+            color: 0,1,1,1
+        
+    Button:
+        text:"Submit"
+        on_press: root.submit()
+        
+        

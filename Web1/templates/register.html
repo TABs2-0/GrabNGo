@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="min-h-screen py-24 bg-slate-950 flex items-center justify-center px-6">
+    <div class="max-w-2xl w-full relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-slate-800 rounded-3xl blur opacity-20"></div>
+        
+        <div class="relative bg-slate-900 border border-slate-800 p-10 rounded-3xl shadow-2xl">
+            <h2 class="text-3xl font-bold text-white mb-2 text-center">Join GrabNGo</h2>
+            <p class="text-slate-500 text-center mb-8 italic">Please fill in your technical details to continue.</p>
+
+            <form action="/web/register" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">Account Type</label>
+                    <select name="role" id="roleSelect" onchange="toggleFields()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                        <option value="buyer">Buyer Account</option>
+                        <option value="seller">Seller Account</option>
+                    </select>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Full Name</label>
+                        <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Phone Number</label>
+                        <input type="text" name="phone" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Location</label>
+                        <input type="text" name="location" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                </div>
+
+                <div id="sellerFields" class="hidden grid md:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-emerald-500/50 mb-2">Business Name</label>
+                        <input type="text" name="buisness_name" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-emerald-500/50 mb-2">Business Type</label>
+                        <input type="text" name="buisness_type" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-emerald-500/50 mb-2">Opening Time</label>
+                        <input type="text" name="open_time" placeholder="e.g. 08:00 AM" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Password</label>
+                    <input type="password" name="password" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-95">
+                    Create My Account
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFields() {
+    const role = document.getElementById('roleSelect').value;
+    const sellerFields = document.getElementById('sellerFields');
+    if (role === 'seller') {
+        sellerFields.classList.remove('hidden');
+    } else {
+        sellerFields.classList.add('hidden');
+    }
+}
+</script>
+{% endblock %}
