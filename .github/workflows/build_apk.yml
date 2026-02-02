@@ -1,0 +1,55 @@
+name: Build Kivy APK
+
+on:
+  workflow_dispatch:   # run manually from Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Step 1: Checkout your repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Step 3: Install system dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            build-essential \
+            git \
+            python3-pip \
+            python3-setuptools \
+            python3-wheel \
+            libffi-dev \
+            libssl-dev \
+            libsqlite3-dev \
+            zlib1g-dev \
+            openjdk-17-jdk \
+            unzip
+
+      # Step 4: Install Buildozer
+      - name: Install Buildozer
+        run: |
+          pip install --upgrade pip
+          pip install buildozer cython
+
+      # Step 5: Build the APK (run inside Frontend folder)
+      - name: Build APK
+        working-directory: Frontend
+        run: |
+          buildozer android debug
+
+      # Step 6: Upload APK as artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: kivy-apk
+          path: Frontend/bin/*.apk
