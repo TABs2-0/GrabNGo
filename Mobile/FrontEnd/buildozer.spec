@@ -1,16 +1,19 @@
 [app]
 
 # (str) Title of your application
-title = My Application
+title =GrapNGo
 
 # (str) Package name
-package.name = myapp
+package.name = grapngo
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
 
 # (str) Source code where the main.py live
 source.dir = .
+source.main = GrapNGo.py
+
+
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas
@@ -37,7 +40,8 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = kivy
+requirements = python3,kivy
+
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -67,7 +71,7 @@ orientation = portrait
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+
 
 #
 # Android specific
@@ -288,7 +292,7 @@ android.archs = arm64-v8a
 
 android.api = 31
 android.minapi = 21
-android.ndk = 25b
+
 
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
